@@ -4,7 +4,7 @@ pyRC
 Overview
 --------
 
-This a python code that computes the electric field in an electromagnetic reverberation chamber in time domain or in frequency domain.
+This a python code that computes the electric field in an electromagnetic reverberation chamber in the time domain or in the frequency domain.
 This model is based on image theory.
 This model represents the work done during my Ph.D. The set of programs is provided under a license or a nondisclosure agreement, and it may be used only in accordance with terms of those agreements. By using this software, you agree to credit the authors: Emmanuel Amador, Philippe Besnier and Christophe Lemoine from the Institut d'Électronique et de Télécommunications de Rennes IETR and the main article describing this model:
 
@@ -16,7 +16,7 @@ You can use the source-code and make modifications to suit your needs. You canno
 
 Comments and suggestions are greatly welcomed.
 
-**Warning**, the code is not optimized yet.
+**Warning**, the code is not optimized yet, most of it is a rough adaptation of a Matlab code.
 
 visit http://projets.ietr.fr/imagetheorymodel/ for more details.
 
