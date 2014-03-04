@@ -21,8 +21,8 @@ def IC(Tm,l,p,h,X,Y,Z,tilt,azimut): #Computes images' postions and image's orien
 	Tp = Tm+3./c*dims.max()
 	dmax=c*Tp
 	order = round(dmax/dims.min())
-	Memo = pi/6*(Tp*c)**3/l/p/h*6*8
 	POSp = array([X,Y,Z, 0, tilt, azimut]);
+ 
 	#1D
 	for i in range(1,int(order)):
 		POSp = vstack([POSp,[2*i*l-X, Y, Z, abs(2*i)-1, pi-tilt, 2*pi-azimut],[2*i*l+X, Y, Z, abs(2*i), tilt, azimut]])
@@ -111,22 +111,24 @@ def IC(Tm,l,p,h,X,Y,Z,tilt,azimut): #Computes images' postions and image's orien
 	POS=vstack((POSp[0,:],POS))
 	return POS
 
-c = 299792458.0
+if __name__ == '__main__':
+    #Image Creation
+    Lt=1e-6 #length of the time window in s
+    
+    #dimensions of the reverb chamber in m
+    l=8.7   
+    p=3.7
+    h=2.9
+    
+    #position of the emitter and angular orientation	
+    X = 1.
+    Y = 2.
+    Z = 1.
+    tilt = pi/2-math.acos(sqrt(2./3));
+    azimut = pi/4;
+    print('Lt= %2.3f mus simulation in a  %2.3f x %2.3f x %2.3f m3 chamber\nEmitter at (%2.3f,%2.3f,%2.3f)\nCreating images...' %(Lt/1e-6,l,p,h,X,Y,Z))    
+    POS=IC(Lt,l,p,h,X,Y,Z,tilt,azimut)
+    
+    savez('POS.npz',Lt=Lt,POS=POS,l=l,p=p,h=h,X=X,Y=Y,Z=Z)    
 
-#Image Creation
-Lt=1e-6 #length of the time window in s
 
-#dimensions of the reverb chamber in m
-l=8.7   
-p=3.7
-h=2.9
-
-#position of the emitter and angular orientation	
-X = 1.
-Y = 2.
-Z = 1.
-tilt = pi/2-math.acos(sqrt(2./3));
-azimut = pi/4;
-
-POS=IC(Lt,l,p,h,X,Y,Z,tilt,azimut)
-savez('POS.npz',Lt=Lt,POS=POS,l=l,p=p,h=h,X=X,Y=Y,Z=Z)
