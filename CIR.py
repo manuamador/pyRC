@@ -85,7 +85,6 @@ def CIR8th(q,s,u,POS,R):  #computes the E-field
 		rx = ((-sb)**2+(1-(-sb)**2)*ca)*DX+(-sb*cb*(1-ca))*DY+(cb*sa)*DZ
 		ry = (-sb*cb*(1-ca))*DX+((cb)**2+(1-cb**2)*ca)*DY+(sb*sa)*DZ
 		rz = (-cb*sa)*DX+(-sb*sa)*DY+ca*DZ
-		DXY=sqrt(DX**2+DY**2)
 		rxy = sqrt(rx**2+ry**2)
 		costheta = rz/r
 		sintheta = rxy/r
