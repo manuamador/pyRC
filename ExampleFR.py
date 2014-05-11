@@ -25,20 +25,20 @@ if os.path.isfile('POS.npz')==0:
     from Image_Creator import *
     #Image Creation
     Lt=1e-6 #length of the time window in s
-     
+
     #dimensions of the reverb chamber in m
-    l=8.7   
+    l=8.7
     p=3.7
     h=2.9
-    #position of the emitter and angular orientation    
+    #position of the emitter and angular orientation
     X = 1.
     Y = 2.
     Z = 1.
     tilt = pi/2-math.acos(sqrt(2./3));
     azimut = pi/4;
-    
+
     POS=IC(Lt,l,p,h,X,Y,Z,tilt,azimut)
-    savez('POS.npz',Lt=Lt,POS=POS,l=l,p=p,h=h,X=X,Y=Y,Z=Z) 
+    savez('POS.npz',Lt=Lt,POS=POS,l=l,p=p,h=h,X=X,Y=Y,Z=Z)
 else:
     MAT=load('POS.npz')
     POS=MAT['POS']
@@ -53,7 +53,7 @@ else:
 print('Lt= %2.3f mus, %2.3f x %2.3f x %2.3f m3' %(Lt/1e-6,l,p,h))
 
 #Frequency response calculation
-f = array(arange(10e6,150e6,1e6))
+f = array(arange(10e6,500e6,1e6))
 
 R=0.998 #loss coefficient
 
@@ -70,7 +70,7 @@ for i in range(0,len(Fz[:,0])):
     l = plot(f/1e6,20*log10(abs(Fx[i,:])))
     grid(True)
     title('Frequency response')
-    ylabel('$E_x$')    
+    ylabel('$E_x$')
     subplot(312)
     l = plot(f/1e6,20*log10(abs(Fy[i,:])))
     grid(True)
